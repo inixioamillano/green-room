@@ -1,0 +1,60 @@
+<div *ngIf="!loadingContestants && !loadingMyVotes; else spinner">
+    <div class="votes-header">
+        <h2>My votes</h2>
+        <button class="btn animated-background" (click)="share()">
+            <fa-icon class="icon" [icon]="faShare"></fa-icon>
+            Share
+        </button>
+    </div>
+    <div *ngIf="!votesOpen" class="alert alert-secondary" role="alert">
+        Voting lines are closed now
+    </div>
+    <div *ngIf="hasEliminated() > 0" class="alert alert-secondary" role="alert">
+        Your votes contain {{hasEliminated()}} eliminated contestants. Those contestants won't appear in any of the rankings<span *ngIf="votesOpen">. You still have time to vote for valid contestants</span>
+    </div>
+    <div #ranking>
+        <h2 hidden class="image-data">My Eurovision 2021 votes</h2>
+        <p hidden class="image-data">Generated with Green Room APP · greenroomesc.app</p>
+        <div  *ngFor="let vote of votes; let i = index">
+            <div class="animated-background contestant header" [ngClass]="{'eliminated': vote && vote.eliminated}" data-toggle="collapse" [attr.data-target]="'#collapse' + (i |indextopoints)" aria-expanded="false" aria-controls="collapseExample">
+                <div class="points animated-background info">
+                    {{i | indextopoints}}
+                </div>
+                <div *ngIf="vote; else selectContestant">
+                    <div class="ranking-item contestant selected">
+                        <div class="flag">
+                            <img class="flag" [src]="'../../../assets/flags/' + vote.countryCode + '.png'" />
+                        </div>
+                        <div class="info">
+                            <div class="song">
+                                <div class="title">{{vote.songTitle}}</div>
+                                <div class="singer">{{vote.singer}}</div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                <ng-template #selectContestant>
+                    Select a contestant
+                </ng-template>
+            </div>
+            <div  *ngIf="contestants" class="collapse" [attr.id]="'collapse' + (i | indextopoints)">
+                <li class="ranking-item animated-background contestant" data-toggle="collapse" (click)="pointContestant(contestant, i)" *ngFor="let contestant of contestants | votable:votes">
+                    <div class="flag">
+                        <img class="flag" [src]="'../../../assets/flags/' + contestant.countryCode + '.png'" />
+                    </div>
+                    <div class="info">
+                        <div class="song">
+                            <div class="title">{{contestant.songTitle}}</div>
+                            <div class="singer">{{contestant.singer}} ({{contestant.countryName}})</div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+    <button class="btn animated-background button clear" (click)="clear()">Clear</button>
+    <button class="btn animated-background button" (click)="submit()" [disabled]="!canSave || !votesOpen">Save</button>
+</div>
+<ng-template #spinner>
+    <loading></loading>
+</ng-template>

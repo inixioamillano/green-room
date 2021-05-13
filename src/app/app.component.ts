@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { UserService } from './services/user.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'euroboard-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'green-room';
+
+  constructor(private userService: UserService) {}
+
+  isLoggedIn() {
+    return this.userService.isLoggedIn();
+  }
+
 }

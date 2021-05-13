@@ -1,0 +1,7 @@
+<div *ngIf="contestants; else loading">
+    <h2 class="title">Global Ranking</h2>
+    <ranking [contestants]="contestants"></ranking>
+</div>
+<ng-template #loading>
+    <loading></loading>
+</ng-template>
