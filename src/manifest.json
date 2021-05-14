@@ -3,7 +3,7 @@
   "background_color": "#4b74ee",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/myvotes",
+  "start_url": "./",
   "name": "Green Room",
   "short_name": "Green Room",
   "description": "Vote for your favourite Eurovision contestants!",

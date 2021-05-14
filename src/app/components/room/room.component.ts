@@ -35,7 +35,7 @@ export class RoomComponent implements OnInit {
       navigator.share({
         title: 'Green Room',
         text: `Join the room ${this.room.name} and vote for your favourite #Eurovision2021 contestants`,
-        url: `https://greenroomapp.com/room/${this.room.id}`
+        url: `https://www.greenroomesc.app/room/${this.room.id}`
       })
     } catch(err) {
       navigator.clipboard.writeText(`https://greenroomapp.com/room/${this.room.id}`);
