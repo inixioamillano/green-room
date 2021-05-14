@@ -48,6 +48,10 @@ export class VotesComponent implements OnInit {
   pointContestant(contestant: any, index) {
     this.votes[index] = contestant;
     this.canSave = this.votes.filter(v => v && v.countryCode).length === 10;
+    if (!this.canSave) {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
   }
 
   clear() {
