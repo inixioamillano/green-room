@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-const API_URL = 'http://192.168.1.134:3333/api';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class ContestantsService {
   constructor(private http: HttpClient) {}
 
   getGlobalRanking() {
-    return this.http.get(`${API_URL}/contestant`)
+    return this.http.get(`${environment.API_URL}/contestant`)
   }
 
 }
