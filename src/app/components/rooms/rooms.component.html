@@ -1,0 +1,10 @@
+<div *ngIf="!loading; else spinner">    
+    <h2>Rooms ({{myRooms.length}})</h2>
+    <div *ngFor="let room of myRooms" [routerLink]="['/room', room.id]" class="animated-background room card">
+        {{room.name}}
+    </div>
+    <button [routerLink]="['/newroom']" class="btn animated-background">Create new room</button>
+</div>
+<ng-template #spinner>
+    <loading></loading>
+</ng-template>

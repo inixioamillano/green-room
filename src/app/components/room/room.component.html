@@ -1,0 +1,16 @@
+<div *ngIf="!loading; else spinner">
+    <h2>{{room.name}}</h2>
+    <div class="room-header">    
+        <div>
+            <fa-icon class="icon" [icon]="faUsers"></fa-icon> {{room.users.length}}
+        </div>
+        <button *ngIf="!navigator.canShare()" class="btn animated-background share" (click)="share()">
+            <fa-icon class="icon" [icon]="faShare"></fa-icon>
+            Share room
+        </button>
+    </div>
+    <ranking [contestants]="room.contestants"></ranking>
+</div>
+<ng-template #spinner>
+    <loading></loading>
+</ng-template>

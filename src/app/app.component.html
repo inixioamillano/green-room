@@ -1,0 +1,34 @@
+<nav class="navbar fixed-top navbar-dark animated-background">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-brand">
+    <span class="title">
+      Green
+      <img class="logo" src="../assets/logo-flag.png">
+      room
+    </span>
+    <div class="subtitle">
+      Sing. Vote. Share.
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active" *ngIf="isLoggedIn()" data-toggle="collapse" data-target="#navbarTogglerDemo01">
+        <a class="nav-link" [routerLink]="['/global']">Global ranking</a>
+      </li>
+      <li class="nav-item active" *ngIf="isLoggedIn()" data-toggle="collapse" data-target="#navbarTogglerDemo01">
+        <a class="nav-link" [routerLink]="['/myvotes']">My Votes</a>
+      </li>
+      <li class="nav-item active" *ngIf="isLoggedIn()" data-toggle="collapse" data-target="#navbarTogglerDemo01">
+        <a class="nav-link" [routerLink]="['/rooms']">Rooms</a>
+      </li>
+      <!--<li class="nav-item active" data-toggle="collapse" data-target="#navbarTogglerDemo01">
+        <a class="nav-link" [routerLink]="['/about']">About this app</a>
+      </li>-->
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

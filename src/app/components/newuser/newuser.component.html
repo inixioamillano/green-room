@@ -1,0 +1,9 @@
+<div *ngIf="!loading; else spinner">
+    <label for="Name">Your name:</label>
+    <input type="text" class="form-control" autocomplete="off" [(ngModel)]="name" id="Name" name="Name" />
+    <button [disabled]="name.length === 0 || name.length > 25" class="animated-background btn btn-primary" (click)="submit()">Start!</button>
+</div>
+<ng-template #spinner>
+    <loading></loading>
+</ng-template>
+

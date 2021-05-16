@@ -1,0 +1,9 @@
+<div *ngIf="!loading; else spinner">
+    <label for="Name">Room name:</label>
+    <input type="text" class="form-control" autocomplete="off" [(ngModel)]="name" id="Name" name="Name" />
+    <button class="animated-background btn btn-primary" (click)="submit()">Start!</button>
+</div>
+<ng-template #spinner>
+    <loading></loading>
+</ng-template>
+
