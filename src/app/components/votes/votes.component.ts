@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { NgxCaptureService } from 'ngx-capture';
@@ -22,7 +23,10 @@ export class VotesComponent implements OnInit {
 
   @ViewChild('ranking', { static: false }) screen: any;
   
-  constructor(private contestantsService: ContestantsService, private votesSevice: VoteService, private captureService: NgxCaptureService) { }
+  constructor(private contestantsService: ContestantsService, 
+    private votesSevice: VoteService, 
+    private captureService: NgxCaptureService,
+    private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.loadingContestants = true;
@@ -87,7 +91,7 @@ export class VotesComponent implements OnInit {
             var url = image.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
             var downloadLink = document.createElement("a");
             downloadLink.href = url;
-            downloadLink.download = "ranking.png";
+            downloadLink.download = `My votes - ${this.datePipe.transform(new Date(), 'dd-MM-yy HH\u2236mm\u2236ss')}.png`;
             for (let i = 0; i < collapsables.length; i++ ) {
               collapsables.item(i).removeAttribute('hidden');
             }
