@@ -1,7 +1,7 @@
 <ul>
     <li class="ranking-item animated-background" *ngFor="let contestant of contestants | orderByPoints">
         <div class="flag">
-            <img class="flag" [src]="'../../../assets/flags/' + contestant.countryCode + '.png'" />
+            <img class="flag" [src]="'./assets/flags/' + contestant.countryCode + '.png'" />
         </div>
         <div class="info">
             <div class="song">

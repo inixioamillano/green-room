@@ -23,7 +23,7 @@
                 <div *ngIf="vote; else selectContestant">
                     <div class="ranking-item contestant selected">
                         <div class="flag">
-                            <img class="flag" [src]="'../../../assets/flags/' + vote.countryCode + '.png'" />
+                            <img class="flag" [src]="'./assets/flags/' + vote.countryCode + '.png'" />
                         </div>
                         <div class="info">
                             <div class="song">
@@ -40,7 +40,7 @@
             <div  *ngIf="contestants" class="collapse" [attr.id]="'collapse' + (i | indextopoints)">
                 <li class="ranking-item animated-background contestant" data-toggle="collapse" (click)="pointContestant(contestant, i)" *ngFor="let contestant of contestants | votable:votes">
                     <div class="flag">
-                        <img class="flag" [src]="'../../../assets/flags/' + contestant.countryCode + '.png'" />
+                        <img class="flag" [src]="'./assets/flags/' + contestant.countryCode + '.png'" />
                     </div>
                     <div class="info">
                         <div class="song">
