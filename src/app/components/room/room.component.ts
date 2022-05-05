@@ -34,7 +34,7 @@ export class RoomComponent implements OnInit {
     try {
       navigator.share({
         title: 'Green Room',
-        text: `Join the room ${this.room.name} and vote for your favourite #Eurovision2021 contestants`,
+        text: `Join the room ${this.room.name} and vote for your favourite #Eurovision${new Date().getFullYear()} contestants`,
         url: `https://green-room-app.herokuapp.com/room/${this.room.id}`
       })
     } catch(err) {

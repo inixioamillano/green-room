@@ -13,7 +13,7 @@
         Your votes contain {{hasEliminated()}} eliminated contestants. Those contestants won't appear in any of the rankings<span *ngIf="votesOpen">. You still have time to vote for valid contestants</span>
     </div>
     <div #ranking>
-        <h2 hidden class="image-data">My Eurovision 2021 votes</h2>
+        <h2 hidden class="image-data">My Eurovision {{currentYear}} votes</h2>
         <p hidden class="image-data">Generated with Green Room APP<br/>@GreenRoomESC<br/>green-room-app.herokuapp.com</p>
         <div  *ngFor="let vote of votes; let i = index">
             <div class="animated-background contestant header" [ngClass]="{'eliminated': vote && vote.eliminated}" data-toggle="collapse" [attr.data-target]="'#collapse' + (i |indextopoints)" aria-expanded="false" aria-controls="collapseExample">
