@@ -1,8 +1,8 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faShare, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { take } from 'rxjs/operators';
+import { UtilsService } from 'src/app/services/utils.service';
 import { RoomService } from '../../services/room.service';
 @Component({
   selector: 'room',
@@ -18,7 +18,7 @@ export class RoomComponent implements OnInit {
   faUsers = faUsers;
   navigator = window.navigator;
 
-  constructor(private route: ActivatedRoute, private roomService: RoomService, private router: Router, private location: Location) { }
+  constructor(private route: ActivatedRoute, private roomService: RoomService, private router: Router, private utils: UtilsService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.url[1].path;
@@ -36,10 +36,10 @@ export class RoomComponent implements OnInit {
       navigator.share({
         title: 'Green Room',
         text: `Join the room ${this.room.name} and vote for your favourite #Eurovision2021 contestants`,
-        url: this.location.prepareExternalUrl(`room/${this.room.id}`)
+        url: this.utils.getExternalURL(`room/${this.room.id}`)
       })
     } catch(err) {
-      navigator.clipboard.writeText(this.location.prepareExternalUrl(`room/${this.room.id}`));
+      navigator.clipboard.writeText(this.utils.getExternalURL(`room/${this.room.id}`));
       alert('Link copied to clipboard!');
     }
   }
