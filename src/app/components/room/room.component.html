@@ -4,7 +4,7 @@
         <div>
             <fa-icon class="icon" [icon]="faUsers"></fa-icon> {{room.users.length}}
         </div>
-        <button *ngIf="!navigator.canShare()" class="btn animated-background share" (click)="share()">
+        <button class="btn animated-background share" (click)="share()">
             <fa-icon class="icon" [icon]="faShare"></fa-icon>
             Share room
         </button>
