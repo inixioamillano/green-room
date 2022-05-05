@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { NgxCaptureService } from 'ngx-capture';
 import { take, tap } from 'rxjs/operators';
+import { UtilsService } from 'src/app/services/utils.service';
 import { ContestantsService } from '../../services/contestants.service';
 import { VoteService } from '../../services/vote.service';
 
@@ -26,10 +27,12 @@ export class VotesComponent implements OnInit {
   constructor(private contestantsService: ContestantsService, 
     private votesSevice: VoteService, 
     private captureService: NgxCaptureService,
-    private datePipe: DatePipe) { }
+    private datePipe: DatePipe,
+    private utils: UtilsService) { }
 
   ngOnInit(): void {
     this.loadingContestants = true;
+    this.utils.getExternalURL();
     this.loadingMyVotes = true;
     this.contestantsService.getGlobalRanking().pipe(take(1)).subscribe(
       (contestants: any[]) => {
