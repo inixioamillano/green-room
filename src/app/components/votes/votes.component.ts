@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { NgxCaptureService } from 'ngx-capture';
@@ -26,10 +26,12 @@ export class VotesComponent implements OnInit {
   constructor(private contestantsService: ContestantsService, 
     private votesSevice: VoteService, 
     private captureService: NgxCaptureService,
-    private datePipe: DatePipe) { }
+    private datePipe: DatePipe,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.loadingContestants = true;
+    this.location.prepareExternalUrl('');
     this.loadingMyVotes = true;
     this.contestantsService.getGlobalRanking().pipe(take(1)).subscribe(
       (contestants: any[]) => {

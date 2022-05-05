@@ -14,7 +14,7 @@
     </div>
     <div #ranking>
         <h2 hidden class="image-data">My Eurovision 2021 votes</h2>
-        <p hidden class="image-data">Generated with Green Room APP<br/>@GreenRoomESC<br/>green-room-app.herokuapp.com</p>
+        <p hidden class="image-data">Generated with Green Room APP<br/>@GreenRoomESC<br/>{{this.location.prepareExternalUrl('')}}</p>
         <div  *ngFor="let vote of votes; let i = index">
             <div class="animated-background contestant header" [ngClass]="{'eliminated': vote && vote.eliminated}" data-toggle="collapse" [attr.data-target]="'#collapse' + (i |indextopoints)" aria-expanded="false" aria-controls="collapseExample">
                 <div class="points animated-background info">
