@@ -24,7 +24,7 @@ export class NewuserComponent implements OnInit {
     this.userService.create(this.name).pipe(take(1)).subscribe(
       (user: any) => {
         this.userService.saveUserId(user.id);
-        this.router.navigate(['/myvotes']);
+        this.router.navigate([this.userService.savedUrl || '/myvotes']);
       },
       (error: any) => this.error = true 
     );
